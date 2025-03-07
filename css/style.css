@@ -40,31 +40,31 @@ nav a{
       align-items: center;
       justify-content: center;
   }
-  div.menu div.roman{
+  div.menu .roman{
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
   }
-  div.menu div.sf {
+  div.menu .sf {
       background-color: rgba(255, 255, 255, 0.7);
       color: black;
   }
   
-  div.menu div.bd {
+  div.menu .bd {
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
   }
   
-  div.menu div.manga {
+  div.menu .manga {
       background-color: rgba(255, 255, 255, 0.7);
       color: black;
 
   }
   
-  div.menu div.docu {
+  div.menu .docu {
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
   }
-  .menu div{
+  .menu a{
       background-color: white;
       width: 44%;
       height: 10vh;

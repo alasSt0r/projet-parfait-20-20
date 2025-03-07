@@ -1,10 +1,10 @@
+<div class="menu">
+    <a class="roman clickable" href="./index.php?action=genre&category=roman">Roman</a>
+    <a class="sf clickable" href="./index.php?action=genre&category=sf">Science-Fiction</a>
+    <a class="bd clickable" href="./index.php?action=genre&category=bd">Bandes-Déssinnée</a>
+    <a class="manga clickable" href="./index.php?action=genre&category=manga">Manga</a>
+    <a class="docu clickable" href="./index.php?action=genre&category=docu">Documentaires</a>
+</div>
+</body>
 
-        <div class="menu">
-            <div class="roman clickable"><a href="./livre/roman/roman.html">Roman</a></div>
-            <div class="sf clickable"><a href="./livre/sci-fi/sci-fi.html">Science-Fiction</a></div>
-            <div class="bd clickable"><a href="./livre/bd/bd.html">Bandes-Déssinnée</a></div>
-            <div class="manga clickable"><a href="./livre/manga/manga.html">Manga</a></div>
-            <div class="docu clickable"><a href="./livre/docu/docu.html">Documentaires</a></div>
-        </div>
-    </body>
 </html>
