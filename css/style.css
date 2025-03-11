@@ -125,3 +125,45 @@ morceau de CSS pour la page Contact à partir d'ici
     margin : 6.5% 0% 6.5% 0%;
 }
 
+
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page Recherche à partir d'ici 
+------------------------------------------------------------------------------------------ */
+
+.menuchercher{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 4% 4% 4% 4%;
+    border-radius:30px;
+    color:white;
+    gap:0.5vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+input.barrerecherche{
+    width: 50%;
+    height: 5vh;
+    border-radius: 520px;
+    border: none;
+    padding: 0 2% 0 2%;
+    margin : 5vh 10vh 5vh 10vh;
+    font-size: 1.5vw;
+}
+
+img.loupe{
+    width: auto;
+    height: 5vh;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+input.boutonrechercher{
+    width: auto;
+    height: 5vh;
+    border-radius: 520px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 1.5vw;
+    margin : 5vh 10vh 5vh 10vh;
+}
