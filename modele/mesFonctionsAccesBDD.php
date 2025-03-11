@@ -10,19 +10,20 @@
         return $unObjPDO;
     }
 
-    // Fonction qui execute la requete $requete passée en paramètre et renvoie le tableau de résultat
-    function dbRequest($unobjPDO, $requete){
-        $unObjPDOStatement = $unobjPDO->prepare($requete);
-        $unObjPDOStatement->execute();
-        $unObjPDOQuery = $unObjPDOStatement->fetchAll;
-        return $unObjPDOQuery;
-    }
-
     // Fonction qui ferme la connexion à la base de données
     function dbDisconnect($unObjPDO){
         $unObjPDO = null;
     }
 
+    // Fonction qui retourne la liste des livres en fonction de leur titre
+    function getLivresByTitre($unObjPDO, $titre){
+        $requete = "SELECT * FROM livre WHERE titre LIKE :titre";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->bindParam(':titre', $titre);
+        $stmt->execute();
+        $lesLivres = $stmt->fetchAll();
+        return $lesLivres;
+    }
     
 
 ?>
