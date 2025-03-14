@@ -19,7 +19,7 @@
     function getLivresByTitre($unObjPDO, $titre){
         $requete = "SELECT * FROM livre WHERE titre LIKE :titre";
         $stmt = $unObjPDO->prepare($requete);
-        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':titre', "%".$titre."%");
         $stmt->execute();
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
