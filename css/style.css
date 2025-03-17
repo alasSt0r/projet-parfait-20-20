@@ -167,3 +167,7 @@ input.boutonrechercher{
     font-size: 1.5vw;
     margin : 5vh 10vh 5vh 10vh;
 }
+
+input.invisible{
+    display: none;
+}
