@@ -1,7 +1,7 @@
 <?php
 
 //  Partie d'appel au modèle si besoin 
-
+include "modele/mesFonctionsAccesBDD.php";
 
 // Partie de traitement des données récupérées si besoin pour mise à disposition de la vue
 
