@@ -10,7 +10,7 @@
             <?php
             if (isset($lesLivres)) {
             foreach ($lesLivres as $unLivre) {
-                echo "<li>. $unLivre['titre'] . "</a></li>";
+                echo "<li>". $unLivre['titre'] . "</a></li>";
             }
         }
             ?>
