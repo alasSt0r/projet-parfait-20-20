@@ -17,7 +17,7 @@
 
     // Fonction qui retourne la liste des livres en fonction de leur titre
     function getLivresByTitre($unObjPDO, $titre){
-        $requete = "SELECT * FROM livre WHERE titre LIKE :titre";
+        $requete = "SELECT * FROM Livres WHERE titre LIKE :titre";
         $stmt = $unObjPDO->prepare($requete);
         $titre2 = "%".$titre."%";
         $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
