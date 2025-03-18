@@ -5,6 +5,4 @@
     var_dump($unObjPDO);
     dbDisconnect($unObjPDO);
     var_dump($unObjPDO);
-
-    //test de repo
 ?>
