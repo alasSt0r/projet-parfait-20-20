@@ -3,7 +3,7 @@
         <input class="invisible" type="text" name="action" value="chercher">
         <input class="barrerecherche" type="text" name="titre" placeholder="Rechercher">
         <select class="genreselect" name="genre">
-            <option value="">--genre--</option>
+            <option value="">Genre</option>
             <?php
             foreach ($lesGenres as $unGenre) {
                 echo "<option value='" . $unGenre['genre'] . "'>" . $unGenre['genre'] . "</option>";
