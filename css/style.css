@@ -171,3 +171,21 @@ input.boutonrechercher{
 input.invisible{
     display: none;
 }
+
+form.formchercher{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resultatrecherche{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2vh;
+    margin: 4% 4% 4% 4%;
+}

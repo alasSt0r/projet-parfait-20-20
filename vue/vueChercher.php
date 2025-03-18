@@ -1,8 +1,8 @@
 <div class="menuchercher">
-    <form method="GET">
+    <form class="formchercher" method="GET">
         <input class="invisible" type="text" name="action" value="chercher">
         <input class="barrerecherche" type="text" name="titre" placeholder="Rechercher">
-        <select name="genre">
+        <select class="genreselect" name="genre">
             <option value="">--genre--</option>
             <?php
             foreach ($lesGenres as $unGenre) {
