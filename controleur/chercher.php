@@ -8,9 +8,6 @@ include "modele/mesFonctionsAccesBDD.php";
 //Instanciation de la connexion 
 $unObjPDO = dbConnection();
 
-//Fermeture de la connexion
-dbDisconnect($unObjPDO);
-
 //Appel de la fonction getGenres
 $lesGenres = getGenres($unObjPDO);
 
@@ -29,6 +26,9 @@ if (isset($_GET['genre'])) {
 if (isset($_GET['titre']) || isset($$_GET['genre'])) {
     $lesLivres = getLivresByTitreAndGenre($unObjPDO, $titre, $genre);
 }
+
+//Fermeture de la connexion
+dbDisconnect($unObjPDO);
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 include "vue/vueChercher.php";
