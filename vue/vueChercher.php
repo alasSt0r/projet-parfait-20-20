@@ -1,7 +1,7 @@
 <div class="menuchercher">
     <form method="GET">
         <input class="invisible" type="text" name="action" value="chercher">
-        <input class="barrerecherche" type="text" name="titre" placeholder="Rechercher" required>
+        <input class="barrerecherche" type="text" name="titre" placeholder="Rechercher">
         <select name="genre">
             <option value="">--genre--</option>
             <?php
