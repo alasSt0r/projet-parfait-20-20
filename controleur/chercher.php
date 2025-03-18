@@ -23,7 +23,7 @@ if (isset($_GET['genre'])) {
     $genre = "";
 }
 
-if (isset($_GET['titre']) || isset($$_GET['genre'])) {
+if (isset($_GET['titre']) || isset($_GET['genre'])) {
     $lesLivres = getLivresByTitreAndGenre($unObjPDO, $titre, $genre);
 }
 
