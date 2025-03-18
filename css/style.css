@@ -139,6 +139,7 @@ morceau de CSS pour la page Recherche à partir d'ici
     gap:0.5vh;
     align-items: center;
     justify-content: space-around;
+    flex-direction: column;
 }
 
 input.barrerecherche{
@@ -158,16 +159,38 @@ img.loupe{
     border: none;
 }
 
-input.boutonrechercher{
+input.boutonrechercher, .genreselect{
     width: auto;
     height: 5vh;
     border-radius: 520px;
     border: none;
-    background-color: rgba(255, 255, 255, 0);
     font-size: 1.5vw;
     margin : 5vh 10vh 5vh 10vh;
 }
 
+input.boutonrechercher{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
 input.invisible{
     display: none;
+}
+
+form.formchercher{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resultatrecherche{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2vh;
+    margin: 4% 4% 4% 4%;
 }
