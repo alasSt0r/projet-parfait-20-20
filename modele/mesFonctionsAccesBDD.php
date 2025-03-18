@@ -15,16 +15,37 @@
         $unObjPDO = null;
     }
 
-    // Fonction qui retourne la liste des livres en fonction de leur titre
-    function getLivresByTitre($unObjPDO, $titre){
-        $requete = "SELECT * FROM Livres WHERE titre LIKE :titre";
-        $stmt = $unObjPDO->prepare($requete);
-        $titre2 = "%".$titre."%";
-        $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
+    // Fonction qui retourne la liste des livres en fonction de leur titre et leur genre
+    function getLivresByTitreAndGenre($unObjPDO, $titre, $genre){
+        if ($genre == "") {
+            $requete = "SELECT * FROM Livres WHERE titre LIKE :titre";
+            $stmt = $unObjPDO->prepare($requete);
+            $titre2 = "%".$titre."%";
+            $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
+        }elseif ($titre == "") {
+            $requete = "SELECT * FROM Livres WHERE genre = :genre";
+            $stmt = $unObjPDO->prepare($requete);
+            $stmt->bindParam(':genre', $genre ,PDO::PARAM_STR);
+        }else{
+            $requete = "SELECT * FROM Livres WHERE titre LIKE :titre AND genre = :genre";
+            $stmt = $unObjPDO->prepare($requete);
+            $titre2 = "%".$titre."%";
+            $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
+            $stmt->bindParam(':genre', $genre ,PDO::PARAM_STR);
+        }
         $stmt->execute();
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
     }
-    
+
+    // Fonction qui retourne la liste des genres
+    function getGenres($unObjPDO){
+        $requete = "SELECT DISTINCT genre FROM Livres";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->execute();
+        $lesGenres = $stmt->fetchAll();
+        return $lesGenres;
+    }
+
 
 ?>
