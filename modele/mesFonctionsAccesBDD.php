@@ -40,7 +40,7 @@
 
     // Fonction qui retourne la liste des genres
     function getGenres($unObjPDO){
-        $requete = "SELECT DISTINCT genre FROM Livres";
+        $requete = "SELECT DISTINCT genre FROM Genres";
         $stmt = $unObjPDO->prepare($requete);
         $stmt->execute();
         $lesGenres = $stmt->fetchAll();
