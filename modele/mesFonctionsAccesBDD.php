@@ -23,11 +23,11 @@
             $titre2 = "%".$titre."%";
             $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
         }elseif ($titre == "") {
-            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.titre= :genre;";
+            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre;";
             $stmt = $unObjPDO->prepare($requete);
             $stmt->bindParam(':genre', $genre ,PDO::PARAM_STR);
         }else{
-            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.titre= :genre AND Livres.titre LIKE :titre;";
+            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre AND Livres.titre LIKE :titre;";
             $stmt = $unObjPDO->prepare($requete);
             $titre2 = "%".$titre."%";
             $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
