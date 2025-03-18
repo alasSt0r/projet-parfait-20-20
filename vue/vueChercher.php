@@ -6,7 +6,7 @@
             <option value="">--genre--</option>
             <?php
             foreach ($lesGenres as $unGenre) {
-                echo "<option value='" . $unGenre['genre'] . "'>" . $unGenre['genre'] . "</option>";
+                echo "<option value='" . $unGenre['titre'] . "'>" . $unGenre['titre'] . "</option>";
             }
             ?>
         </select>
