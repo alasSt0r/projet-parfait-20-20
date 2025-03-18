@@ -12,9 +12,9 @@ $unObjPDO = dbConnection();
 $lesGenres = getGenres($unObjPDO);
 
 if (isset($_GET['titre'])) {
-    $recherche = $_GET['titre'];
+    $titre = $_GET['titre'];
 }else{
-    $recherche = "";
+    $titre = "";
 }
 
 if (isset($_GET['genre'])) {
