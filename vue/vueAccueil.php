@@ -1,4 +1,5 @@
-
+<html>
+    <body>
         <div class="menu">
             <div class="roman clickable"><a href="./livre/roman/roman.html">Roman</a></div>
             <div class="sf clickable"><a href="./livre/sci-fi/sci-fi.html">Science-Fiction</a></div>
