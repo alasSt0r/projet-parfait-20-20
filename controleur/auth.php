@@ -7,7 +7,7 @@ $login = htmlspecialchars($_POST['login']);
 $password = $_POST['password'];
 
 // On se connecte à la base
-$pdo = dbConnection();
+$pdo = conDBbibliothecaire();
 
 // Appel de la fonction qui vérifie les identifiants
 if (connectionBibli($pdo, $login, $password)) {

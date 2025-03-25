@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     // Fonction de connexion à la base de données
     function dbConnection()
@@ -39,6 +39,14 @@
         } else {
             return false;
         }
+    }
+    function conDBbibliothecaire()
+    {try{
+        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','bibliothecaire','2b6X2zp@wqCz*WT[');
+        }catch(PDOException $e){
+            die('Erreur : '.$e->getMessage());
+        }
+        return $unObjPDO;
     }
 
 ?>
