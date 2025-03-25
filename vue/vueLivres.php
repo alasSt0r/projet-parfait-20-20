@@ -13,10 +13,6 @@
         echo "<strong>ID Auteur :</strong> " . $livre["id_auteur"] . "<br>";
         echo "<strong>Résumé :</strong> " . $livre["resume"] . "<br><br>";
     }
-    
-    /*
-    echo "<pre>";
-    print_r($ToutLivres);
-    echo "</pre>"; */
+
     dbDisconnect($unObjPDO);
 ?>
