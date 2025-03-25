@@ -1,6 +1,9 @@
 <?php
 
-    // Fonction de connexion à la base de données
+    /**
+     * Fonction de connexion à la base de données
+     * @return PDO
+     */
     function dbConnection()
     {try{
         $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','userBiblio','y2gKnyq>he*4&JY');
@@ -10,12 +13,21 @@
         return $unObjPDO;
     }
 
-    // Fonction qui ferme la connexion à la base de données
+    /**
+     * Fonction qui ferme la connexion à la base de données
+     * @param PDO $unObjPDO
+     */
     function dbDisconnect(& $unObjPDO){
         $unObjPDO = null;
     }
 
-    // Fonction qui retourne la liste des livres en fonction de leur titre et leur genre
+    /**
+     * Fonction qui retourne la liste des livres en fonction du titre et du genre
+     * @param PDO $unObjPDO
+     * @param string $titre
+     * @param string $genre
+     * @return array
+     */
     function getLivresByTitreAndGenre($unObjPDO, $titre, $genre){
         if ($genre == "") {
             $requete = "SELECT * FROM Livres WHERE titre LIKE :titre";
@@ -23,11 +35,11 @@
             $titre2 = "%".$titre."%";
             $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
         }elseif ($titre == "") {
-            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre;";
+            $requete = "SELECT Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre;";
             $stmt = $unObjPDO->prepare($requete);
             $stmt->bindParam(':genre', $genre ,PDO::PARAM_STR);
         }else{
-            $requete = "SELECT * FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre AND Livres.titre LIKE :titre;";
+            $requete = "SELECT Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre AND Livres.titre LIKE :titre;";
             $stmt = $unObjPDO->prepare($requete);
             $titre2 = "%".$titre."%";
             $stmt->bindParam(':titre', $titre2 ,PDO::PARAM_STR);
@@ -38,7 +50,11 @@
         return $lesLivres;
     }
 
-    // Fonction qui retourne la liste des genres
+    /**
+     * Fonction qui retourne la liste des genres
+     * @param PDO $unObjPDO
+     * @return array
+     */
     function getGenres($unObjPDO){
         $requete = "SELECT DISTINCT genre FROM Genres";
         $stmt = $unObjPDO->prepare($requete);
@@ -47,6 +63,7 @@
         return $lesGenres;
     }
 
+    //INSTABLE ---------------------------------------------------
     function connectionBibli($unObjPDO, $login, $passwd) {
         $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
         $stmt = $unObjPDO->prepare($requete);
@@ -70,7 +87,13 @@
         }
         return $unObjPDO;
     }
+//INSTABLE FIN---------------------------------------------------
 
+    /**
+     * Fonction qui retourne la liste des livres
+     * @param PDO $unObjPDO
+     * @return array
+     */
     function getLivres($pdo) {
         $pdo = dbConnection();
         $sql = "SELECT id, titre, id_auteur, LEFT(resume, 50) AS resume FROM Livres";
