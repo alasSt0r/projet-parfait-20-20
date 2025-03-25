@@ -14,14 +14,16 @@
     </form>
 
     <div class="resultatrecherche">
-        <ul>
-            <?php
-            if (isset($lesLivres)) {
-                foreach ($lesLivres as $unLivre) {
-                    echo "<li>" . $unLivre['titre'] . "</a></li>";
-                }
+
+        <?php
+        if (isset($lesLivres)) {
+            foreach ($lesLivres as $unLivre) {
+                echo "<div class='livrecard'>";
+                echo "<p>" . htmlspecialchars($unLivre['titre']) . "</p>";
+                echo "<img class='imglivre' src='".htmlspecialchars($unLivre['photo'])."'/>";
+                echo "</div>";
             }
-            ?>
-        </ul>
+        }
+        ?>
     </div>
 </div>
