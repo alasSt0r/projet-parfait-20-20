@@ -37,7 +37,6 @@
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
     }
-<<<<<<< HEAD
 
     // Fonction qui retourne la liste des genres
     function getGenres($unObjPDO){
@@ -48,7 +47,6 @@
         return $lesGenres;
     }
 
-=======
     function connectionBibli($unObjPDO, $login, $passwd) {
         $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
         $stmt = $unObjPDO->prepare($requete);
@@ -72,6 +70,5 @@
         }
         return $unObjPDO;
     }
->>>>>>> wassim
 
 ?>
