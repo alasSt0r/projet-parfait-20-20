@@ -25,6 +25,20 @@
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
     }
+    function connectionBibli($unObjPDO, $login, $passwd) {
+        $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->execute([$login, $passwd]);
     
+        // Récupération de l'utilisateur
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Vérification des identifiants
+        if ($user) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 ?>
