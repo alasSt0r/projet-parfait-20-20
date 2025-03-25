@@ -205,10 +205,31 @@ form.formchercher {
 
 .resultatrecherche {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     gap: 2vh;
     margin: 4% 4% 4% 4%;
+}
+
+.livrecard{
+    display :flex;
+    flex-direction: column;
+    gap: 1vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 30px;
+    color: white;
+    width: 20%;
+    padding: 2% 2% 2% 2%;
+}
+
+.livrecard img{
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.livrecard p{
+    text-align: center;
 }
