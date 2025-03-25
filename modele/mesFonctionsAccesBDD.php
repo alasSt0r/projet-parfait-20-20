@@ -7,8 +7,8 @@
         'mysql:host=localhost;
         dbname=bibliotheque;
         charset=utf8',
-        'login4358',
-        'QlDZZEsFcWfdNrw'
+        'root',
+        ''
         );
 
         }catch(PDOException $e){
@@ -25,7 +25,7 @@
 
     function dbConnection2()
     {try {
-        $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bibliotheque;charset=utf8', 'bibliothecaire', '2b6X2zp@wqCz*WT[');
+        $pdo = new PDO('mysql:host=localhost; dbname=bibliotheque;charset=utf8','root','');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch (PDOException $e) {

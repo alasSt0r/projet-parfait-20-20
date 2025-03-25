@@ -7,7 +7,7 @@ body{
     height: 100%;
     width: 100%;
     background-image: url("../img/Bibliothèque.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: 100% 100vh;
     font-family: sans-serif;
   }
@@ -18,6 +18,7 @@ body{
   body nav .chercher{
     padding: 0 16% 0 16%;  
 }
+
 nav{
     font-size: 1.5vw;
     background-color: rgba(0, 0, 0, 0.7);
@@ -25,6 +26,7 @@ nav{
     justify-content: space-around;
     padding : 2% 0 2% 0;
 }
+
 nav a{
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0 8% 0 8%;
@@ -83,3 +85,28 @@ nav a{
       color: white;
       transform: scale(1.1);
   }
+
+
+.livres-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    gap: 20px; /* Espacement entre les livres */
+}
+.livre {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #eeeeee;
+    opacity: 100%;
+    display: flex;
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: flex-start; /* Alignement à gauche */
+}
+.livre strong {
+    font-weight: bold;
+}
+
+.title_color {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+}
