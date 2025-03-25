@@ -11,7 +11,7 @@
     }
 
     // Fonction qui ferme la connexion à la base de données
-    function dbDisconnect($unObjPDO){
+    function dbDisconnect(& $unObjPDO){
         $unObjPDO = null;
     }
 
