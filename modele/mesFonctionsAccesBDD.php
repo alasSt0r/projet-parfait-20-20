@@ -37,7 +37,6 @@
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
     }
-<<<<<<< HEAD
 
     // Fonction qui retourne la liste des genres
     function getGenres($unObjPDO){
@@ -48,7 +47,6 @@
         return $lesGenres;
     }
 
-=======
     function connectionBibli($unObjPDO, $login, $passwd) {
         $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
         $stmt = $unObjPDO->prepare($requete);
@@ -72,6 +70,23 @@
         }
         return $unObjPDO;
     }
->>>>>>> wassim
+
+    function getLivres($pdo) {
+        $pdo = dbConnection();
+        $sql = "SELECT id, titre, id_auteur, LEFT(resume, 50) AS resume FROM Livres";
+        $stmt = $pdo->query($sql);
+            $livres = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $livres[] = [
+                    'id' => $row['id'],
+                    'titre' => $row['titre'],
+                    'id_auteur' => $row['id_auteur'],
+                    'resume' => $row['resume'] . '...'
+                ];
+            }
+            return $livres;
+
+    }
+
 
 ?>

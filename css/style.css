@@ -24,7 +24,8 @@ body nav .chercher {
     padding: 0 16% 0 16%;
 }
 
-nav {
+
+nav{
     font-size: 1.5vw;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
@@ -32,7 +33,7 @@ nav {
     padding: 2% 0 2% 0;
 }
 
-nav a {
+nav a{
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0 8% 0 8%;
     border-radius: 520px;
@@ -260,4 +261,27 @@ morceau de CSS pour la page Menu bibli à partir d'ici
 /* Optionnel : ajouter un effet de survol pour un léger soulèvement */
 .bouttonmenu:active {
     transform: translateY(2px); /* Effet de "pression" lors du clic */
+}
+.livres-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    gap: 20px; /* Espacement entre les livres */
+}
+.livre {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #eeeeee;
+    opacity: 100%;
+    display: flex;
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: flex-start; /* Alignement à gauche */
+}
+.livre strong {
+    font-weight: bold;
+}
+
+.title_color {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
 }

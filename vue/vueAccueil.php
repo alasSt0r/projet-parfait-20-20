@@ -5,6 +5,3 @@
     <a class="manga clickable" href="./index.php?action=genre&category=manga">Manga</a>
     <a class="docu clickable" href="./index.php?action=genre&category=docu">Documentaires</a>
 </div>
-</body>
-
-</html>

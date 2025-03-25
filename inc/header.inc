@@ -8,6 +8,7 @@
   <body>
      <nav> 
        <a class="clickable" href="./index.php?action=accueil">Accueil</a>
+       <a class="clickable" href="./index.php?action=livres">Livres</a>
        <a class="chercher clickable" href="./index.php?action=chercher">Chercher</a>
        <a class="clickable" href="./index.php?action=contact">Contact</a>
        <a class="clickable" href="./index.php?action=connexion">Se connecter</a>
