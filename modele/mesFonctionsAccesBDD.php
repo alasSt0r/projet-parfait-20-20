@@ -70,7 +70,6 @@
         }
         return $unObjPDO;
     }
-<<<<<<< HEAD
 
     function getLivres($pdo) {
         $pdo = dbConnection();
@@ -89,7 +88,5 @@
 
     }
 
-=======
->>>>>>> 4c845fc995934069ea830f1e908192219c8b4e80
 
 ?>
