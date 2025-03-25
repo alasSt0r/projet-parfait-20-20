@@ -5,14 +5,12 @@ session_start();
 require_once __DIR__ . '/../modele/mesFonctionsAccesBDD.php';
 
 // Recupartion du form de login.php
-$login = htmlspecialchars($_POST['login']);
-$password = $_POST['password'];
+$login = htmlspecialchars(trim($_POST['login']));
+$password = htmlspecialchars(trim($_POST['password']));
 
-// On se connecte à la base
-$pdo = conDBbibliothecaire();
 
 // Appel de la fonction qui vérifie les identifiants
-if (connectionBibli($pdo, $login, $password)) {
+if (connectionBibli( $login, $password)) {
     // Si les identifiants sont corrects, on enregistre le login en session
     $_SESSION['bibliothecaire'] = $login;
     // On redirige vers le menu du bibliothécaire

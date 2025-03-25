@@ -12,13 +12,13 @@ $unObjPDO = dbConnection();
 $lesGenres = getGenres($unObjPDO);
 
 if (isset($_GET['titre'])) {
-    $titre = $_GET['titre'];
+    $titre = htmlspecialchars(trim($_GET['titre']));
 }else{
     $titre = "";
 }
 
 if (isset($_GET['genre'])) {
-    $genre = $_GET['genre'];
+    $genre = htmlspecialchars(trim($_GET['genre']));
 }else{
     $genre = "";
 }
