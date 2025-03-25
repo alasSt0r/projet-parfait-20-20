@@ -1,8 +1,8 @@
-<h1>Bienvenue, <?php echo $_SESSION['bibliothecaire']; ?> !</h1>
-<ul>
-    <li><a href="ajouterLivre.php">Ajouter un livre</a></li>
-    <li><a href="supprimerLivre.php">Supprimer un livre</a></li>
-    <li><a href="modifierLivre.php">Modifier un livre</a></li>
-    <li><a href="listeLivres.php">Liste des livres</a></li>
-    <li><a href="controleur/logout.php">Déconnexion</a></li>
-</ul>
+<div class="menucontact">
+<h1>Menu bibliothèque</h1>
+    <a class="bouttonmenu" href="ajouterLivre.php">Ajouter un livre</a>
+    <a class="bouttonmenu" href="supprimerLivre.php">Supprimer un livre</a>
+    <a class="bouttonmenu" href="modifierLivre.php">Modifier un livre</a>
+    <a class="bouttonmenu" href="listeLivres.php">Liste des livres</a>
+    <a class="bouttonmenu" href="controleur/logout.php">Déconnexion</a>
+</div>
