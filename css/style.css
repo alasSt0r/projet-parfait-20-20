@@ -232,4 +232,31 @@ form.formchercher {
 
 .livrecard p{
     text-align: center;
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page Menu bibli à partir d'ici 
+------------------------------------------------------------------------------------------ */
+
+/* Style de base pour les boutons */
+.bouttonmenu {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    color: #fff; /* Couleur du texte */
+    background-color: #000600be; /* Couleur de fond */
+    border: 2px solid transparent; /* Bordure transparente au départ */
+    border-radius: 5px; /* Coins arrondis */
+    transition: all 0.3s ease; /* Transition pour les changements */
+}
+
+/* Changement de couleur et de bordure au passage de la souris */
+.bouttonmenu:hover {
+    background-color: #4a4a4a; /* Couleur de fond au survol */
+    border: 2px solid #fff; /* Bordure blanche au survol */
+    color: #fff; /* Couleur du texte au survol */
+}
+
+/* Optionnel : ajouter un effet de survol pour un léger soulèvement */
+.bouttonmenu:active {
+    transform: translateY(2px); /* Effet de "pression" lors du clic */
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     // Fonction de connexion à la base de données
     function dbConnection()
@@ -37,6 +37,7 @@
         $lesLivres = $stmt->fetchAll();
         return $lesLivres;
     }
+<<<<<<< HEAD
 
     // Fonction qui retourne la liste des genres
     function getGenres($unObjPDO){
@@ -47,5 +48,30 @@
         return $lesGenres;
     }
 
+=======
+    function connectionBibli($unObjPDO, $login, $passwd) {
+        $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->execute([$login, $passwd]);
+    
+        // Récupération de l'utilisateur
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Vérification des identifiants
+        if ($user) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function conDBbibliothecaire()
+    {try{
+        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','bibliothecaire','2b6X2zp@wqCz*WT[');
+        }catch(PDOException $e){
+            die('Erreur : '.$e->getMessage());
+        }
+        return $unObjPDO;
+    }
+>>>>>>> wassim
 
 ?>

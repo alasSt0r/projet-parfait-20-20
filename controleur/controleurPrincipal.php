@@ -6,6 +6,8 @@ function controleurPrincipal($action){
     $lesActions["chercher"] = "chercher.php";
     $lesActions["contact"] = "contact.php";
     $lesActions["genre"] = "genre.php";
+    $lesActions["connexion"] = "connexion.php";
+    $lesActions["menu"] = "menu.php";
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];
