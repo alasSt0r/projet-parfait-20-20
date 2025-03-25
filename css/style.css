@@ -1,4 +1,4 @@
-body{
+body {
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -10,79 +10,92 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100vh;
     font-family: sans-serif;
-  }
-  a,a:hover,a:visited,a:active{
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
     color: inherit;
     text-decoration: none;
-  }
-  body nav .chercher{
-    padding: 0 16% 0 16%;  
 }
-nav{
+
+body nav .chercher {
+    padding: 0 16% 0 16%;
+}
+
+nav {
     font-size: 1.5vw;
     background-color: rgba(0, 0, 0, 0.7);
-    display:flex;
+    display: flex;
     justify-content: space-around;
-    padding : 2% 0 2% 0;
+    padding: 2% 0 2% 0;
 }
-nav a{
+
+nav a {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0 8% 0 8%;
-    border-radius:520px; 
+    border-radius: 520px;
 }
-  .menu{
-      display:flex;
-      width: 100%;
-      height: 80vh;
-      flex-wrap: wrap;
-      flex-direction: column; 
-      gap : 5%;
-      align-items: center;
-      justify-content: center;
-  }
-  div.menu .roman{
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-  }
-  div.menu .sf {
-      background-color: rgba(255, 255, 255, 0.7);
-      color: black;
-  }
-  
-  div.menu .bd {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-  }
-  
-  div.menu .manga {
-      background-color: rgba(255, 255, 255, 0.7);
-      color: black;
 
-  }
-  
-  div.menu .docu {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-  }
-  .menu a{
-      background-color: white;
-      width: 44%;
-      height: 10vh;
-      text-align: center;
-      border-radius: 520px;
-      font-size:min(2vw, 30px);
-      display:flex;
-      justify-content: center;
-      align-items: center;
-  }
-  .clickable{
-      transition: transform 0.3s ease;
-  }
-  .clickable:hover{
-      background-color: darkgrey;
-      color: white;
-      transform: scale(1.1);
-  }
+.menu {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+div.menu .roman {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+div.menu .sf {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+
+div.menu .bd {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+div.menu .manga {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+
+}
+
+div.menu .docu {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.menu a {
+    background-color: white;
+    width: 44%;
+    height: 10vh;
+    text-align: center;
+    border-radius: 520px;
+    font-size: min(2vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clickable {
+    transition: transform 0.3s ease;
+}
+
+.clickable:hover {
+    background-color: darkgrey;
+    color: white;
+    transform: scale(1.1);
+}
 
 /* ------------------------------------------------------------------------------------------ 
 morceau de CSS pour la page Contact à partir d'ici 
@@ -92,37 +105,40 @@ morceau de CSS pour la page Contact à partir d'ici
     display: flex;
     background-color: rgba(0, 0, 0, 0.7);
     flex-direction: column;
-    flex-wrap:nowrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
     margin: 4% 4% 4% 4%;
     padding: 2% 4% 2.5% 4%;
-    border-radius:30px;
-    color:white;
-    gap:0.5vh;
+    border-radius: 30px;
+    color: white;
+    gap: 0.5vh;
 }
-.co1, .co2{
+
+.co1,
+.co2 {
     display: flex;
-    gap :2vh;
+    gap: 2vh;
     flex-direction: column;
 }
-.contenu{
+
+.contenu {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    gap:12vw;
+    gap: 12vw;
 }
 
-.contenu div{
+.contenu div {
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    margin : 2% 0% 2% 0%;
+    margin: 2% 0% 2% 0%;
 }
 
-.co2 div{
-    margin : 6.5% 0% 6.5% 0%;
+.co2 div {
+    margin: 6.5% 0% 6.5% 0%;
 }
 
 
@@ -130,54 +146,56 @@ morceau de CSS pour la page Contact à partir d'ici
 morceau de CSS pour la page Recherche à partir d'ici 
 ------------------------------------------------------------------------------------------ */
 
-.menuchercher{
+.menuchercher {
     display: flex;
     background-color: rgba(0, 0, 0, 0.7);
     margin: 4% 4% 4% 4%;
-    border-radius:30px;
-    color:white;
-    gap:0.5vh;
+    border-radius: 30px;
+    color: white;
+    gap: 0.5vh;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
 }
 
-input.barrerecherche{
+input.barrerecherche {
     width: 50%;
     height: 5vh;
     border-radius: 520px;
     border: none;
     padding: 0 2% 0 2%;
-    margin : 5vh 10vh 5vh 10vh;
+    margin: 5vh 40vh 5vh 5vh;
     font-size: 1.5vw;
 }
 
-img.loupe{
+img.loupe {
     width: auto;
     height: 5vh;
     background-color: rgba(255, 255, 255, 0);
     border: none;
 }
 
-input.boutonrechercher, .genreselect{
+button.boutonrechercher,
+.genreselect {
     width: auto;
     height: 5vh;
     border-radius: 520px;
     border: none;
     font-size: 1.5vw;
-    margin : 5vh 10vh 5vh 10vh;
+    margin: 10vh 10vh 10vh 10vh;
 }
 
-input.boutonrechercher{
+button.boutonrechercher {
     background-color: rgba(255, 255, 255, 0);
+    margin-left: 30vh;
 }
 
 
-input.invisible{
+input.invisible {
     display: none;
 }
 
-form.formchercher{
+form.formchercher {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -185,7 +203,7 @@ form.formchercher{
     align-items: center;
 }
 
-.resultatrecherche{
+.resultatrecherche {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
