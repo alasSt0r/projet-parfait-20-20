@@ -1,12 +1,12 @@
 <?php
 
     /**
-     * Fonction de connexion à la base de données
+     * Fonction de connexion à la base de données avec user et password en parametre
      * @return PDO
      */
-    function dbConnection()
-    {try{
-        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','userBiblio','y2gKnyq>he*4&JY');
+    function dbConnection($user = 'userBiblio', $passwd = 'y2gKnyq>he*4&JY'){
+        try{
+        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8',$user,$passwd);
         }catch(PDOException $e){
             die('Erreur : '.$e->getMessage());
         }
@@ -63,52 +63,35 @@
         return $lesGenres;
     }
 
-    //INSTABLE ---------------------------------------------------
-    function connectionBibli($unObjPDO, $login, $passwd) {
-        $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
-        $stmt = $unObjPDO->prepare($requete);
-        $stmt->execute([$login, $passwd]);
-    
-        // Récupération de l'utilisateur
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        // Vérification des identifiants
-        if ($user) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    function conDBbibliothecaire()
-    {try{
-        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','bibliothecaire','2b6X2zp@wqCz*WT[');
-        }catch(PDOException $e){
-            die('Erreur : '.$e->getMessage());
-        }
-        return $unObjPDO;
-    }
-//INSTABLE FIN---------------------------------------------------
-
     /**
      * Fonction qui retourne la liste des livres
      * @param PDO $unObjPDO
      * @return array
      */
     function getLivres($pdo) {
-        $pdo = dbConnection();
-        $sql = "SELECT id, titre, id_auteur, LEFT(resume, 50) AS resume FROM Livres";
+        $sql = "SELECT 
+                    Livres.id, 
+                    Livres.titre, 
+                    Auteurs.nom AS auteur_nom, 
+                    Auteurs.prenom AS auteur_prenom, 
+                    Livres.resume 
+                FROM Livres 
+                JOIN Auteurs ON Auteurs.id = Livres.id_auteur";
+    
         $stmt = $pdo->query($sql);
-            $livres = [];
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $livres[] = [
-                    'id' => $row['id'],
-                    'titre' => $row['titre'],
-                    'id_auteur' => $row['id_auteur'],
-                    'resume' => $row['resume'] . '...'
-                ];
-            }
-            return $livres;
-
+        $livres = [];
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $livres[] = [
+                'id' => $row['id'],
+                'titre' => $row['titre'],
+                'nom' => $row['auteur_nom'],   // Correction de l'accès au champ
+                'prenom' => $row['auteur_prenom'], // Correction de l'accès au champ
+                'resume' => mb_substr($row['resume'], 0, 50, 'UTF-8') . '...' // Meilleure gestion des caractères UTF-8
+            ];
+        }
+    
+        return $livres;
     }
 
 

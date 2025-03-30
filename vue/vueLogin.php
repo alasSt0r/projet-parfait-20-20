@@ -1,3 +1,7 @@
+<?php if (isset($_SESSION['error'])): ?>
+    <p style="color: red;"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
+<?php endif; ?>
+
 <div class="menucontact">
     <h1>Connexion Bibliothécaire</h1>
     <form method="post" action="controleur/auth.php">
