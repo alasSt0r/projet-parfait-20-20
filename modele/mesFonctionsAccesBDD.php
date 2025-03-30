@@ -3,6 +3,8 @@
     /**
      * Fonction de connexion à la base de données avec user et password en parametre
      * @return PDO
+     * Fonction de connexion à la base de données
+     * @return PDO objet de connexion à la base de données
      */
     function dbConnection($user = 'userBiblio', $passwd = 'y2gKnyq>he*4&JY'){
         try{
@@ -15,7 +17,7 @@
 
     /**
      * Fonction qui ferme la connexion à la base de données
-     * @param PDO $unObjPDO
+     * @param PDO $unObjPDO objet de connexion à la base de données
      */
     function dbDisconnect(& $unObjPDO){
         $unObjPDO = null;
@@ -23,10 +25,10 @@
 
     /**
      * Fonction qui retourne la liste des livres en fonction du titre et du genre
-     * @param PDO $unObjPDO
-     * @param string $titre
-     * @param string $genre
-     * @return array
+     * @param PDO $unObjPDO objet de connexion à la base de données 
+     * @param string $titre titre a rechercher
+     * @param string $genre genre a rechercher
+     * @return array tableau de livres
      */
     function getLivresByTitreAndGenre($unObjPDO, $titre, $genre){
         if ($genre == "") {
@@ -52,8 +54,8 @@
 
     /**
      * Fonction qui retourne la liste des genres
-     * @param PDO $unObjPDO
-     * @return array
+     * @param PDO $unObjPDO objet de connexion à la base de données
+     * @return array tableau de genres 
      */
     function getGenres($unObjPDO){
         $requete = "SELECT DISTINCT genre FROM Genres";
@@ -63,10 +65,52 @@
         return $lesGenres;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * 
+     * Fonction qui vérifie les identifiants de connexion
+     * @param mixed $login
+     * @param mixed $passwd
+     * @return bool true si les identifiants sont corrects, false sinon
+     */
+    function connectionBibli( $login, $passwd) {
+        $unObjPDO = dbConnection();
+        $requete = "SELECT login, password FROM utilisateurs WHERE login = ? AND password = ?";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->execute([$login, $passwd]);
+    
+        // Récupération de l'utilisateur
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Vérification des identifiants
+        if ($user) {
+            dbDisconnect($unObjPDO);
+            return true;
+        } else {
+            dbDisconnect($unObjPDO);
+            return false;
+        }
+    }
+    /**
+     * initie la connexion en tant que bibliothecaire
+     * @return PDO objet de connexion à la base de données
+     */
+    function conDBbibliothecaire()
+    {try{
+        $unObjPDO = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8','bibliothecaire','2b6X2zp@wqCz*WT[');
+        }catch(PDOException $e){
+            die('Erreur : '.$e->getMessage());
+        }
+        return $unObjPDO;
+    }
+
+
+>>>>>>> refs/remotes/origin/main
     /**
      * Fonction qui retourne la liste des livres
-     * @param PDO $unObjPDO
-     * @return array
+     * @param PDO $unObjPDO objet de connexion à la base de données
+     * @return array tableau de livres
      */
     function getLivres($pdo) {
         $sql = "SELECT 
