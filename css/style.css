@@ -268,10 +268,11 @@ morceau de CSS pour la page Menu bibli à partir d'ici
     gap: 20px; /* Espacement entre les livres */
 }
 .livre {
-    border: 1px solid #ccc;
+    border: 4px solid rgb(0, 0, 0, 0);
     padding: 15px;
     border-radius: 8px;
-    background-color: #eeeeee;
+    background-image : url("../img/test_livre.jpg");
+    color : #ffffff;
     opacity: 100%;
     display: flex;
     flex-direction: column; /* Affiche les éléments en colonne */
@@ -283,5 +284,5 @@ morceau de CSS pour la page Menu bibli à partir d'ici
 
 .title_color {
     background-color: rgba(255, 255, 255, 0);
-    color: white;
+    color: #f2eecb;
 }

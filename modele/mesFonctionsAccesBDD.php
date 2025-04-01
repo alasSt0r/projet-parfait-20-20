@@ -73,16 +73,25 @@
 
     function getLivres($pdo) {
         $pdo = dbConnection();
-        $sql = "SELECT id, titre, id_auteur, LEFT(resume, 50) AS resume FROM Livres";
+        $sql = 
+        "SELECT Livres.id, titre, id_auteur, Auteurs.nom, genre,LEFT(resume, 1000) AS resume 
+        FROM Livres 
+        JOIN Auteurs ON Auteurs.id = Livres.id_auteur
+        JOIN genres ON genres.id = livres.id_genre";
         $stmt = $pdo->query($sql);
             $livres = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $livres[] = [
                     'id' => $row['id'],
                     'titre' => $row['titre'],
-                    'id_auteur' => $row['id_auteur'],
+                    'auteur' => $row['nom'],
+                    'genre' => $row['genre'],
                     'resume' => $row['resume'] . '...'
                 ];
+                if (!isset($row['nom'])) {
+                    echo "Clé 'nom' absente !";
+                    print_r($row); // Affiche le tableau pour voir les clés disponibles
+                }
             }
             return $livres;
 
