@@ -64,6 +64,19 @@
     }
 
     /**
+     * Fonction qui retourne la liste des auteurs
+     * @param PDO $unObjPDO objet de connexion à la base de données
+     * @return array tableau d'auteurs
+     */
+    function getAuteurs($unObjPDO){
+        $requete = "SELECT id,nom,prenom FROM Auteurs";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->execute();
+        $lesAuteurs = $stmt->fetchAll();
+        return $lesAuteurs;
+    }
+
+    /**
      * 
      * Fonction qui vérifie les identifiants de connexion
      * @param mixed $login
