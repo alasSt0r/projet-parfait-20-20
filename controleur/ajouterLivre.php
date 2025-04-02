@@ -1,8 +1,12 @@
 <?php
 
 //  Partie d'appel au modèle si besoin 
-
-include "modele/mesFonctionsAccesBDD.php";
+session_start();
+if (!isset($_SESSION['bibliothecaire'])) {
+    header("Location: index.php?action=connexion");
+    exit();
+}
+include_once "modele/mesFonctionsAccesBDD.php";
 
 // Partie de traitement des données récupérées si besoin pour mise à disposition de la vue
 

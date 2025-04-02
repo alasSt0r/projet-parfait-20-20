@@ -1,6 +1,6 @@
 <div class="menucontact">
     <h1>Ajouter un livre</h1>
-    <form method="post" action="controleur/ajouterLivre.php">
+    <form method="post" action="controleur/scriptAjoutLivre.php" enctype="multipart/form-data">
         <label>Titre :</label>
         <input type="text" name="titre" required>
         <br><br>
@@ -28,9 +28,11 @@
         </select>
         <br><br>
         <label>Date de sortie :</label>
-        <input type="date" name="annee" required>
+        <input type="date" name="datesortie" required>
         <br><br>
         <label>Résumé :</label>
         <textarea name="resume" rows="4" cols="50" required></textarea>
         <br><br>
         <button type="submit">Ajouter</button>
+    </form>
+</div>
