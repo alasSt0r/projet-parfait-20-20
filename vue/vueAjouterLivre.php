@@ -16,6 +16,7 @@
             }
             ?>
         </select>
+        <br><br>
         <label>Auteur :</label>
         <select name="auteur" required>
             <option value="">Auteur</option>
@@ -26,6 +27,7 @@
 
             ?>
         </select>
+        <button type="button" onclick="window.location.href='index.php?action=ajouterAuteur'">Ajouter un auteur</button>
         <br><br>
         <label>Date de sortie :</label>
         <input type="date" name="datesortie" required>
