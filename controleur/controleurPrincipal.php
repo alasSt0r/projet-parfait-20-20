@@ -10,6 +10,7 @@ function controleurPrincipal($action){
     $lesActions["menu"] = "menu.php";
     $lesActions["livres"] = "livres.php";
     $lesActions["ajouterLivre"] = "ajouterLivre.php";
+    $lesActions["ajouterAuteur"] = "ajouterAuteur.php";
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];

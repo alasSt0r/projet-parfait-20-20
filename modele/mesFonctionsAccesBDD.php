@@ -139,4 +139,30 @@ function addLivre($unObjPDO, $titre, $photo, $genre, $auteur, $datesortie, $resu
     $stmt->bindParam(':resume', $resume);
     $stmt->execute();
 }
-?>
+
+/**
+ * Fonction qui ajoute un auteur
+ * @param PDO $unObjPDO objet de connexion à la base de données
+ * @param string $nom nom de l'auteur
+ * @param string $prenom prenom de l'auteur
+ * @param string $date date de naissance de l'auteur
+ */
+function addAuteur($unObjPDO, $nom, $prenom, $date)
+{
+    try {
+        $requete = "INSERT INTO Auteurs (nom, prenom, date_naissance) VALUES (:nom, :prenom, :date)";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':date', $date);
+        if ($stmt->execute()) {
+            echo "Auteur ajouté avec succès.";
+        } else {
+            echo "Erreur lors de l'ajout de l'auteur.";
+            print_r($stmt->errorInfo()); // Affiche les erreurs SQL
+        }
+    } catch (PDOException $e) {
+        echo "Erreur lors de l'ajout de l'auteur : " . $e->getMessage();
+        exit();
+    }
+}

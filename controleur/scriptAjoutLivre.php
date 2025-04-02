@@ -1,5 +1,13 @@
 <?php
 
+ // Verification de la session
+// Si la session n'est pas démarrée, rediriger vers la page de connexion
+session_start();
+if (!isset($_SESSION['bibliothecaire'])) {
+    header("Location: index.php?action=connexion");
+    exit();
+}
+
 //Affichage des erreurs(ne sse voit pas car cette page n'est pas affichée à cause du header à la fin)
 
 ini_set('display_errors', 1);
@@ -17,7 +25,7 @@ include "../autre/mesFonctionsDivers.php";
 
 $pdo = dbConnection("bibliothecaire", "2b6X2zp@wqCz*WT[");
 
-// Recupération des chemins d'accès
+// Recupération des genres
 
 $lesGenres = getGenres($pdo);
 
