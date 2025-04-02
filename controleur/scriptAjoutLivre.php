@@ -34,13 +34,13 @@ $auteur = htmlspecialchars($_POST['auteur']);
 $datesortie = htmlspecialchars($_POST['datesortie']);
 $resume = htmlspecialchars($_POST['resume']);
 if(move_uploaded_file($nom_origine_complet, $nom_destination)) {
-    echo "Le fichier a été téléchargé avec succès.";
+    echo "Le fichier a été téléchargé avec succès.<br><br>";
 } else {
     echo "Erreur lors du téléchargement du fichier.";
 }
 try {
 
-    $photo = $nom_destination;
+    $photo = './img/' .$chemin . '/' .$titreDestination.'.jpg';
     addLivre($pdo, $titre, $photo, $genre, $auteur, $datesortie, $resume);
 
 } catch (Exception $e) {
@@ -48,9 +48,11 @@ try {
 } finally {
     dbDisconnect($pdo); // Ferme la connexion à la base de données
 }
-exit();
 
-// appel du script de vue qui permet de gerer l'affichage des donnees
+
+// Affichage d'un message de succès
+echo "<script>alert('Livre ajouté avec succès');</script>";
+// Redirection vers la page d'ajout de livre
 header("Location: ../index.php?action=ajouterLivre");
 exit();
 ?>

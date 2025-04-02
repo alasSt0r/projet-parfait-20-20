@@ -129,7 +129,7 @@ function getLivres($pdo)
  */
 function addLivre($unObjPDO, $titre, $photo, $genre, $auteur, $datesortie, $resume)
 {
-    $requete = "INSERT INTO Livres (titre, photo, id_genre, id_auteur, datesortie, resume) VALUES (:titre, :photo, (SELECT id FROM Genres WHERE genre = :genre), (SELECT id FROM Auteurs WHERE nom = :auteur AND prenom = :prenom), :annee, :resume)";
+    $requete = "INSERT INTO Livres (titre, photo, id_genre, id_auteur, datesortie, resume) VALUES ( :titre, :photo, (SELECT id FROM Genres WHERE genre = :genre), :auteur, :datesortie, :resume)";
     $stmt = $unObjPDO->prepare($requete);
     $stmt->bindParam(':titre', $titre);
     $stmt->bindParam(':photo', $photo);
