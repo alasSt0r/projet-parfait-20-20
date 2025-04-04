@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
  // Verification de la session
 // Si la session n'est pas démarrée, rediriger vers la page de connexion
 session_start();

@@ -42,11 +42,11 @@ function getLivresByTitreAndGenre($unObjPDO, $titre, $genre)
         $titre2 = "%" . $titre . "%";
         $stmt->bindParam(':titre', $titre2, PDO::PARAM_STR);
     } elseif ($titre == "") {
-        $requete = "SELECT Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre;";
+        $requete = "SELECT Livres.id, Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre;";
         $stmt = $unObjPDO->prepare($requete);
         $stmt->bindParam(':genre', $genre, PDO::PARAM_STR);
     } else {
-        $requete = "SELECT Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre AND Livres.titre LIKE :titre;";
+        $requete = "SELECT Livres.id, Livres.titre, Livres.photo FROM Livres JOIN Genres ON Livres.id_genre = Genres.id  WHERE Genres.genre= :genre AND Livres.titre LIKE :titre;";
         $stmt = $unObjPDO->prepare($requete);
         $titre2 = "%" . $titre . "%";
         $stmt->bindParam(':titre', $titre2, PDO::PARAM_STR);
@@ -143,12 +143,9 @@ function getLivres($pdo)
         $stmt = $unObjPDO->prepare($requete);
         $stmt->bindParam(':id', $idLivre, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $livre = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row as an associative array
+        return $livre;
     }
-
-
-    return $livres;
-
 
 /**
  * Fonction qui ajoute un livre

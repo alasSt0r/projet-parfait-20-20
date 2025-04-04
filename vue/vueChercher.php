@@ -14,11 +14,11 @@
     </form>
     <?php if (!empty($lesLivres)): ?>
         <div class="resultatrecherche">
-            <?php foreach ($lesLivres as $unLivre): ?>
+            <?php foreach ($lesLivres as $livre ): ?>
                 <div class="livrecard">
-                    <a href="./index.php?action=livre&id=<?= htmlspecialchars($unLivre['id']) ?>" class="livre-link">
-                        <img src="<?= htmlspecialchars($unLivre['photo'] ?: './img/default-book.png') ?>" alt="Image du livre">
-                        <p><strong><?= htmlspecialchars($unLivre['titre']) ?></strong></p>
+                    <a href="./index.php?action=livre&id=<?= htmlspecialchars($livre['id']) ?>" class="livre-link">
+                        <img src="<?= htmlspecialchars($livre['photo'] ?: './img/default-book.png') ?>" alt="Image du livre">
+                        <p><strong><?= htmlspecialchars($livre['titre']) ?></strong></p>
                     </a>
                 </div>
             <?php endforeach; ?>
