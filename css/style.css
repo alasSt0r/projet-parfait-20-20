@@ -151,91 +151,113 @@ morceau de CSS pour la page Recherche à partir d'ici
 
 .menuchercher {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     background-color: rgba(0, 0, 0, 0.7);
-    margin: 4% 4% 4% 4%;
+    margin: 4%;
+    padding: 2%;
     border-radius: 30px;
     color: white;
-    gap: 0.5vh;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
 }
 
-input.barrerecherche {
-    width: 50%;
+.formchercher {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.barrerecherche,
+.genreselect,
+.boutonrechercher {
     height: 5vh;
     border-radius: 520px;
     border: none;
-    padding: 0 2% 0 2%;
-    margin: 5vh 40vh 5vh 5vh;
     font-size: 1.5vw;
+    padding: 0 1rem;
+}
+
+.barrerecherche {
+    width: 50%;
+}
+
+.boutonrechercher {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boutonrechercher {
+    background-color: white; /* Couleur de fond classique */
+    border: 2px solid black; /* Contour noir */
+    border-radius: 50%; /* Forme arrondie */
+    width: 50px; /* Largeur fixe */
+    height: 50px; /* Hauteur fixe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Curseur de clic */
+    transition: transform 0.3s ease; /* Transition pour effet au survol */
+}
+
+.boutonrechercher:hover {
+    background-color: rgb(185, 185, 185); /* Couleur de fond au survol */
+    transform: scale(1.1); /* Zoom léger au survol */
+}
+img.loupe {
+    width: auto;
+    height: 5vh; /* Taille d'origine */
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
 }
 
 img.loupe {
-    width: auto;
-    height: 5vh;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
+    width: 130%; /* Ajuste la taille de l'image à l'intérieur du bouton */
+    height: auto;
 }
-
-button.boutonrechercher,
-.genreselect {
-    width: auto;
-    height: 5vh;
-    border-radius: 520px;
-    border: none;
-    font-size: 1.5vw;
-    margin: 10vh 10vh 10vh 10vh;
-}
-
-button.boutonrechercher {
-    background-color: rgba(255, 255, 255, 0);
-    margin-left: 30vh;
-}
-
 
 input.invisible {
     display: none;
 }
 
-form.formchercher {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .resultatrecherche {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2vh;
-    margin: 4% 4% 4% 4%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 2.5rem; /* Augmente l'espacement horizontal et vertical */
+    margin: 4%; /* Marges autour du conteneur */
+    align-items: start; /* Aligner les éléments au début */
 }
 
-.livrecard{
-    display :flex;
+.livrecard {
+    display: flex;
     flex-direction: column;
-    gap: 1vh;
+    align-items: center;
+    gap: 0.5rem;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 30px;
     color: white;
-    width: 20%;
-    padding: 2% 2% 2% 2%;
-}
-
-.livrecard img{
+    padding: 0.2rem;
+    text-align: center;
     width: 100%;
-    height: auto;
-    border-radius: 30px;
+    max-width: 300px;
+    transition: transform 0.3s ease; /* Ajoute une transition pour le zoom */
 }
 
-.livrecard p{
+.livrecard img {
+    width: 100%;
+    border-radius: 29px;
+    object-fit: cover;
+}
+
+.livrecard p {
     text-align: center;
 }
+
+.livrecard:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
 /* ------------------------------------------------------------------------------------------ 
 morceau de CSS pour la page Menu bibli à partir d'ici 
 ------------------------------------------------------------------------------------------ */
@@ -268,6 +290,7 @@ morceau de CSS pour la page Menu bibli à partir d'ici
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
     gap: 20px; /* Espacement entre les livres */
+    margin: 4% 10%; /* Ajout de marges à gauche et à droite */
 }
 .livre {
     border: 1px solid #ccc;
@@ -287,3 +310,105 @@ morceau de CSS pour la page Menu bibli à partir d'ici
     background-color: rgba(255, 255, 255, 0);
     color: white;
 }
+
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page livre(détails) à partir d'ici 
+------------------------------------------------------------------------------------------ */
+
+.menu-livre {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 4% 4% 4% 4%;
+    padding: 2% 4% 2.5% 4%;
+    border-radius: 30px;
+    color: white;
+    gap: 2vh;
+    align-items: center;
+}
+
+.titre-livre {
+    font-size: 2.5vw;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.contenu-livre {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 5vw;
+    width: 100%;
+}
+
+.details-livre {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 60%;
+}
+
+.image-livre img {
+    width: 250px;
+    height: 120;
+    border-radius: 20px;
+}
+
+.actions-livre {
+    margin-top: 2vh;
+}
+
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page vueLivres à partir d'ici 
+------------------------------------------------------------------------------------------ */
+
+.livres-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 3vh; /* Augmenter légèrement l'espacement entre les livres */
+    margin: 4% 10%; /* Ajout de marges à gauche et à droite */
+}
+
+.livrecard-vueLivres {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Réduire l'écart entre les éléments */
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    color: white;
+    padding: 2%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    height: 375px; /* Définir une hauteur fixe pour l'uniformité */
+    justify-content: flex-start; /* Aligner les éléments au début pour réduire l'espacement */
+}
+
+.livrecard-vueLivres img {
+    margin: auto;
+    width: 154px; /* Largeur fixe */
+    height: 245px; /* Hauteur fixe */
+    object-fit: cover; /* Empêcher la distorsion tout en remplissant la zone */
+    border-radius: 20px; /* Conserver un rayon de bordure cohérent */
+}
+
+.livrecard-vueLivres p {
+    display: inline; /* S'assurer que le texte reste sur la même ligne */
+    margin: 0;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem; /* Réduire l'espacement entre les paragraphes */
+}
+
+.livrecard-vueLivres p strong {
+    font-size: 1rem; /* Ajuster la taille de la police pour les étiquettes */
+}
+
+.livre-link-vueLivres {
+    text-decoration: none;
+    color: inherit;
+}
+
+.livrecard-vueLivres:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
