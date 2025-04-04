@@ -140,6 +140,7 @@ function getLivres($pdo)
                     JOIN Genres ON Genres.id = Livres.id_genre
                     WHERE Livres.id = :id";
         
+        
         $stmt = $unObjPDO->prepare($requete);
         $stmt->bindParam(':id', $idLivre, PDO::PARAM_INT);
         $stmt->execute();
