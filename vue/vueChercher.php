@@ -14,13 +14,13 @@
 
             <p>
             <select class="menu-deroulant" name="genre" id="chercher">
-            <option value="">Genre</option>
+                <option value="">Genre</option>
                 <option value="1">Roman</option>
                 <option value="2">Science Fiction</option>
                 <option value="3">BD</option>
                 <option value="4">Manga</option>
                 <option value="5">Documentaire</option>
-        </select>
+            </select>
             </p>
 
            
@@ -33,7 +33,7 @@
 
             <button type="submit">Recherche</button>
 
-    </form>
+        </form>       
     </div>
 
 
@@ -43,16 +43,16 @@
         <?php
             if (isset($AllLivres)) {
                 foreach ($AllLivres as $unLivre) {
-                echo "<div class='livrecard'>";
+                    echo "<div class='livrecard'>";
                     echo "<p>Titre: " . htmlspecialchars($unLivre['titre']) . "</p>";
                     echo "<p>Auteur : " . htmlspecialchars($unLivre['auteur']) . "</p>";
                     echo "<p>Genre: " . htmlspecialchars($unLivre['genre']) . "</p>";
                     echo "<p>Date Sortie: " . htmlspecialchars($unLivre['datesortie']) . "</p>";
                     echo "<p>Cotation:" . htmlspecialchars($unLivre['cotation']) . "</p>";
-                echo "</div>";
+                    echo "</div>";
                 
+                }
             }
-        }
         ?>
     
     </div>
