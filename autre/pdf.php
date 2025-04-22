@@ -1,6 +1,6 @@
 <?php
 include "../modele/mesFonctionsAccesBDD.php";
-error_reporting(E_ALL); 
+error_reporting(E_ALL);
 ini_set("display_errors", 1);
 $unObjPDO = dbConnection();
 
@@ -12,6 +12,25 @@ dbDisconnect($unObjPDO);
 use Dompdf\Dompdf;
 
 require_once 'dompdf/autoload.inc.php';
+
+// Chemin absolu vers l'image locale
+$imagePath = dirname(__DIR__) . ltrim($livre['photo'], '.'); // Correction pour remonter d'un niveau
+
+// Vérifiez si le fichier image existe
+if (file_exists($imagePath)) {
+    // Encodez l'image en base64
+    $imageData = base64_encode(file_get_contents($imagePath));
+    // Déterminez le type MIME de l'image
+    $imageMimeType = mime_content_type($imagePath);
+    // Préparez l'image encodée pour l'inclure dans le HTML
+    $imageBase64 = 'data:' . $imageMimeType . ';base64,' . $imageData;
+} else {
+    $imageBase64 = ''; // Si l'image n'existe pas, laissez vide ou utilisez une image par défaut
+    echo "L'image n'existe pas.";
+    echo "<br>";
+    echo $imagePath;
+    exit;
+}
 
 $dompdf = new Dompdf();
 
@@ -50,6 +69,16 @@ $dompdf->loadHtml('
         th {
             background-color: #f2f2f2;
         }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: auto;
+            max-height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -57,28 +86,33 @@ $dompdf->loadHtml('
     <table>
         <tr>
             <th>Titre</th>
-            <td>' . $livre['titre'] . '</td>
+            <td>' . htmlspecialchars($livre['titre']) . '</td>
         </tr>
         <tr>
             <th>Auteur</th>
-            <td>' . $livre['nom'] . ' ' . $livre['prenom'] . '</td>
+            <td>' . htmlspecialchars($livre['nom']) . ' ' . htmlspecialchars($livre['prenom']) . '</td>
         </tr>
         <tr>
             <th>Genre</th>
-            <td>' . $livre['genre'] . '</td>
+            <td>' . htmlspecialchars($livre['genre']) . '</td>
         </tr>
         <tr>
             <th>Date de sortie</th>
-            <td>' . $livre['datesortie'] . '</td>
+            <td>' . htmlspecialchars($livre['datesortie']) . '</td>
         </tr>
         <tr>
             <th>Résumé</th>
-            <td>' . $livre['resume'] . '</td>
+            <td>' . htmlspecialchars($livre['resume']) . '</td>
         </tr>
     </table>
+    <br>
+    <div class="image-container">
+        <img src="' . $imageBase64 . '" alt="Couverture du livre">
+    </div>
 </body>
 </html>
 ');
+
 // Render the HTML as PDF
 $dompdf->render();
 // Output the generated PDF to Browser
