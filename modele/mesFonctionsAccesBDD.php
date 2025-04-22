@@ -197,3 +197,21 @@ function addAuteur($unObjPDO, $nom, $prenom, $date)
         exit();
     }
 }
+/**
+ * Fonction qui supprime un livre en fonction de son ID
+ * @param PDO $unObjPDO objet de connexion à la base de données
+ * @param int $idLivre identifiant du livre à supprimer
+ * @return bool true si la suppression a réussi, false sinon
+ */
+function deleteLivre($unObjPDO, $idLivre)
+{
+    try {
+        $requete = "DELETE FROM Livres WHERE id = :id";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->bindParam(':id', $idLivre, PDO::PARAM_INT);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Erreur lors de la suppression du livre : " . $e->getMessage();
+        return false;
+    }
+}

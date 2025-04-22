@@ -11,6 +11,7 @@ function controleurPrincipal($action){
     $lesActions["livre"] = "livre.php";
     $lesActions["ajouterLivre"] = "ajouterLivre.php";
     $lesActions["ajouterAuteur"] = "ajouterAuteur.php";
+    $lesActions["supprimerLivre"] = "supprimerLivre.php";
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];
