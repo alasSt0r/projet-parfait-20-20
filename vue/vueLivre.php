@@ -29,6 +29,10 @@
         </div>
     </div>
     <div class="actions-livre">
+        <form method="post" action="autre/pdf.php">
+            <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+            <button type="submit" class="bouttonmenu">Télécharger le PDF</button>
+        </form>
         <a href="index.php" class="bouttonmenu">Retour à la liste des livres</a>
     </div>
 </div>
