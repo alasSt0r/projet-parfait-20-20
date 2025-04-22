@@ -420,4 +420,18 @@ morceau de CSS pour la page vueLivres à partir d'ici
     transform: scale(1.05); /* Effet de zoom au survol */
 }
 
-
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page Supprimer Livre à partir d'ici 
+------------------------------------------------------------------------------------------ */
+.bouton-supprimer{
+    color: #fff; /* Couleur du texte */
+    background-color: #9f0000; /* Couleur de fond */
+    border: 2px solid transparent; /* Bordure transparente au départ */
+    border-radius: 5px; /* Coins arrondis */
+    margin-bottom: 15px;
+}
+.success-message{
+    font-size: large;
+    color: #ffbbbb;
+    font-weight: bold;
+}
