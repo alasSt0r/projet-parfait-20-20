@@ -183,13 +183,15 @@ button.boutonrechercher,
     border-radius: 520px;
     border: none;
     font-size: 1.5vw;
-    margin: 10vh 10vh 10vh 10vh;
+    padding: 0px 20px 0px 20px;
+    margin: 20px 20px 20px 20px;
 }
 
 button.boutonrechercher {
     background-color: rgba(255, 255, 255, 0);
     margin-left: 30vh;
 }
+
 
 
 input.invisible {
@@ -203,6 +205,47 @@ form.formchercher {
     justify-content: space-around;
     align-items: center;
 }
+
+
+/* ------------------------------------------------------------------------------------------ 
+CSS Recherche sprint 2 (Reprise du CSS de la barre de recherche pour appliquer le meme style Changement de l'opacité de 0.7 à 0.0)
+------------------------------------------------------------------------------------------ */
+
+.menuchercherChamps {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0% 2% 0% 2%;
+    border-radius: 10px;
+    color: white;
+    gap: 0.5vh;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.menu-deroulant {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #555;
+    margin: 0% 10% 0% 0%;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    width: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-deroulant:hover {
+    background-color: #e0e0e0;
+}
+
+
+/* ------------------------------------------------------------------------------------------ 
+CSS de ...
+------------------------------------------------------------------------------------------ */
+
+
 
 .resultatrecherche {
     display: flex;

@@ -38,6 +38,45 @@
         return $lesLivres;
     }
 
+    function getLivresByFiveParametre($unObjPDO, $titre, $auteur, $genre, $datesortie, $cotation) {
+        $requete = "SELECT * FROM livres JOIN genres ON livres.id_genre = genres.id JOIN auteurs ON livres.id_auteur = auteurs.id WHERE 1=1" ;
+        $params = [];
+    
+        if ($titre !== "") {
+            $requete .= " AND livres.titre LIKE :titre";
+            $params[':titre'] = "%".$titre."%";
+        }
+        if ($auteur !== "") {
+            $requete .= " AND auteurs.nom LIKE :auteur";
+            $params[':auteur'] = "%".$auteur."%";
+        }
+        if ($genre !== "") {
+            $requete .= " AND genres.genre = :genre";
+            $params[':genre'] = $genre;
+        }
+
+        if ($datesortie !== "") {
+            $requete .= " AND livres.datesortie = :datesortie";
+            $params[':datesortie'] = $datesortie;
+        }
+        if ($cotation !== "") {
+            $requete .= " AND livres.cotation = :cotation";
+            $params[':cotation'] = $cotation;
+        }
+    
+        $stmt = $unObjPDO->prepare($requete);
+    
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, PDO::PARAM_STR);
+        }
+    
+        $stmt->execute();
+        $AllLivres = $stmt->fetchAll();
+    
+        return $AllLivres;
+    }
+    
+
     // Fonction qui retourne la liste des genres
     function getGenres($unObjPDO){
         $requete = "SELECT DISTINCT genre FROM Genres";
@@ -74,7 +113,7 @@
     function getLivres($pdo) {
         $pdo = dbConnection();
         $sql = 
-        "SELECT Livres.id, titre, id_auteur, Auteurs.nom, genre,LEFT(resume, 1000) AS resume 
+        "SELECT Livres.id, titre, id_auteur, Auteurs.nom, genre,datesortie, cotation, LEFT(resume, 1000) AS resume
         FROM Livres 
         JOIN Auteurs ON Auteurs.id = Livres.id_auteur
         JOIN genres ON genres.id = livres.id_genre";
@@ -86,7 +125,9 @@
                     'titre' => $row['titre'],
                     'auteur' => $row['nom'],
                     'genre' => $row['genre'],
-                    'resume' => $row['resume'] . '...'
+                    'resume' => $row['resume'] . '...',
+                    'datesortie' => $row['datesortie'],
+                    'cotation' => $row['cotation'],
                 ];
                 if (!isset($row['nom'])) {
                     echo "Clé 'nom' absente !";
