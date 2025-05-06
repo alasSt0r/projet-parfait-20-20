@@ -36,6 +36,7 @@ $genre = htmlspecialchars($_POST['genre']);
 $auteur = htmlspecialchars($_POST['auteur']);
 $datesortie = htmlspecialchars($_POST['datesortie']);
 $resume = htmlspecialchars($_POST['resume']);
+$cotation = htmlspecialchars($_POST['cotation']);
 
 // Vérification de l'extension du fichier
 
@@ -80,7 +81,7 @@ if(move_uploaded_file($nom_origine_complet, $nom_destination)) {
 try {
 
     $photo = './img/' .$chemin . '/' .$titreDestination.'.jpg';
-    addLivre($pdo, $titre, $photo, $genre, $auteur, $datesortie, $resume);
+    addLivre($pdo, $titre, $photo, $genre, $auteur, $datesortie, $resume, $cotation);
 
 } catch (Exception $e) {
     echo "Erreur lors de l'ajout du livre : " . $e->getMessage();

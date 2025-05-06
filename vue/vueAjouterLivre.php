@@ -4,6 +4,9 @@
         <label>Titre :</label>
         <input type="text" name="titre" required>
         <br><br>
+        <label>Cotation :</label>
+        <input type="text" name="cotation" required>
+        <br><br>
         <label>Photo :</label>
         <input type="file" name="photo" required>
         <br><br>
