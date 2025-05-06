@@ -30,25 +30,31 @@ if(isset($_GET['sort'])) {
             usort($ToutLivres, function($a, $b) {
                 return strcmp($b['nom'] . ' ' . $b['prenom'], $a['nom'] . ' ' . $a['prenom']);
             });
+            break;
         case 'cotation_asc':
             usort($ToutLivres, function($a, $b) {
-                preg_match('/[A-Z]+)-(\d+)/', $a['cotation'], $matchesA);
-                preg_match('/[A-Z]+)-(\d+)/', $b['cotation'], $matchesB);
-                $prefixe = strcmp($matchesA[1], $matchesB[1]);
+                $prefixeA = trim(substr($a['cotation'], 0, 1));
+                $prefixeB = trim(substr($b['cotation'], 0, 1));
+                $numA = trim(substr($a['cotation'], 1));
+                $numB = trim(substr($b['cotation'], 1));
+                $prefixe = strcmp($prefixeA, $prefixeB);
                 if ($prefixe !== 0) {
                     return $prefixe;
                 }
-                return intval($matchesA[2]) - intval($matchesB[2]);
+                return intval($numB) - intval($numA);
             });
+            break;
         case 'cotation_desc':
             usort($ToutLivres, function($a, $b) {
-                preg_match('/[A-Z]+)-(\d+)/', $a['cotation'], $matchesA);
-                preg_match('/[A-Z]+)-(\d+)/', $b['cotation'], $matchesB);
-                $prefixe = strcmp($matchesB[1], $matchesA[1]);
+                $prefixeA = trim(substr($a['cotation'], 0, 1));
+                $prefixeB = trim(substr($b['cotation'], 0, 1));
+                $numA = trim(substr($a['cotation'], 1));
+                $numB = trim(substr($b['cotation'], 1));
+                $prefixe = strcmp($prefixeB, $prefixeA);
                 if ($prefixe !== 0) {
                     return $prefixe;
                 }
-                return intval($matchesB[2]) - intval($matchesA[2]);
+                return intval($numA) - intval($numB);
             });
             break;
     }
