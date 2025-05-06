@@ -11,6 +11,8 @@ $unObjPDO = dbConnection();
 //Appel de la fonction getGenres
 $lesGenres = getGenres($unObjPDO);
 
+
+/*
 if (isset($_GET['titre'])) {
     $titre = htmlspecialchars(trim($_GET['titre']));
 }else{
@@ -26,7 +28,46 @@ if (isset($_GET['genre'])) {
 if (isset($_GET['titre']) || isset($_GET['genre'])) {
     $lesLivres = getLivresByTitreAndGenre($unObjPDO, $titre, $genre);
 }
+*/
 
+
+// Récupération des paramètres de l'URL ou initialisation à vide
+if (isset($_POST['titre'])) {
+    $titre = $_POST['titre'];
+}else{
+    $titre = "";
+}
+
+if (isset($_POST['genre'])) {
+    $genre = $_POST['genre'];
+}else{
+    $genre = "";
+}
+
+if (isset($_POST['auteur'])) {
+    $auteur = $_POST['auteur'];
+}else{
+    $auteur = "";
+}
+
+if (isset($_POST['datesortie'])) {
+    $datesortie = $_POST['datesortie'];
+}else{
+    $datesortie = "";
+}
+
+if (isset($_POST['cotation'])) {
+    $cotation = $_POST['cotation'];
+}else{
+    $cotation = "";
+}
+
+if (isset($_POST['titre']) || isset($_POST['genre']) || isset($_POST['auteur']) || isset($_POST['datesortie']) || isset($_POST['cotation'])) {
+    $AllLivres = getLivresByFiveParametre($unObjPDO, $titre, $auteur, $genre, $datesortie, $cotation);
+}
+else {
+    $AllLivres = getLivres($unObjPDO);
+}
 //Fermeture de la connexion
 dbDisconnect($unObjPDO);
 

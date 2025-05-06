@@ -57,6 +57,47 @@ function getLivresByTitreAndGenre($unObjPDO, $titre, $genre)
     return $lesLivres;
 }
 
+
+function getLivresByFiveParametre($unObjPDO, $titre, $auteur, $genre, $datesortie, $cotation) {
+    $requete = "SELECT * FROM livres JOIN genres ON livres.id_genre = genres.id JOIN auteurs ON livres.id_auteur = auteurs.id WHERE 1=1" ;
+    $params = [];
+
+    if ($titre !== "") {
+        $requete .= " AND livres.titre LIKE :titre";
+        $params[':titre'] = "%".$titre."%";
+    }
+    if ($auteur !== "") {
+        $requete .= " AND auteurs.nom LIKE :auteur";
+        $params[':auteur'] = "%".$auteur."%";
+    }
+    if ($genre !== "") {
+        $requete .= " AND genres.genre = :genre";
+        $params[':genre'] = $genre;
+    }
+
+    if ($datesortie !== "") {
+        $requete .= " AND livres.datesortie = :datesortie";
+        $params[':datesortie'] = $datesortie;
+    }
+    if ($cotation !== "") {
+        $requete .= " AND livres.cotation = :cotation";
+        $params[':cotation'] = $cotation;
+    }
+
+    $stmt = $unObjPDO->prepare($requete);
+
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+    $AllLivres = $stmt->fetchAll();
+
+    return $AllLivres;
+}
+
+
+
 /**
  * Fonction qui retourne la liste des genres
  * @param PDO $unObjPDO objet de connexion à la base de données
