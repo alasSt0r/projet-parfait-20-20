@@ -1,3 +1,11 @@
+<div class="menuchercher">
+    <form class="formorder" method="GET">
+        <input type="hidden" name="action" value="livres">
+        <button type="submit" name="sort" value="titre_asc">Trier par Titre (A-Z)</button>
+        <button type="submit" name="sort" value="titre_desc">Trier par Titre (Z-A)</button>
+        <button type="submit" name="sort" value="auteur_asc">Trier par Auteur (A-Z)</button>
+        <button type="submit" name="sort" value="auteur_desc">Trier par Auteur (Z-A)</button>
+</div>
 <div class="livres-container">
     <?php
     foreach ($ToutLivres as $livre) {
