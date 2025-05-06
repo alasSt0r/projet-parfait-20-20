@@ -98,7 +98,8 @@ function getLivres($pdo)
                     Livres.photo,
                     Auteurs.nom AS auteur_nom, 
                     Auteurs.prenom AS auteur_prenom, 
-                    Livres.resume 
+                    Livres.resume,
+                    Livres.cotation 
                 FROM Livres 
                 JOIN Auteurs ON Auteurs.id = Livres.id_auteur";
     
@@ -112,7 +113,8 @@ function getLivres($pdo)
                 'photo'=> $row['photo'],
                 'nom' => $row['auteur_nom'],   // Correction de l'accès au champ
                 'prenom' => $row['auteur_prenom'], // Correction de l'accès au champ
-                'resume' => mb_substr($row['resume'], 0, 50, 'UTF-8') . '...' // Meilleure gestion des caractères UTF-8
+                'resume' => mb_substr($row['resume'], 0, 50, 'UTF-8') . '...', // Meilleure gestion des caractères UTF-8
+                'cotation' => $row['cotation']
             ];
         }
         return $livres;
