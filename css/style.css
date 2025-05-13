@@ -430,8 +430,16 @@ morceau de CSS pour la page Supprimer Livre à partir d'ici
     border-radius: 5px; /* Coins arrondis */
     margin-bottom: 15px;
 }
-.success-message{
+.success-messageD{
     font-size: large;
     color: #ffbbbb;
+    font-weight: bold;
+}
+/* ------------------------------------------------------------------------------------------ 
+morceau de CSS pour la page Modifier Livre à partir d'ici 
+------------------------------------------------------------------------------------------ */
+.success-messageM{
+    font-size: large;
+    color: #00ffae;
     font-weight: bold;
 }

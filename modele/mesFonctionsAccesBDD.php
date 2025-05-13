@@ -3,8 +3,6 @@
 /**
  * Fonction de connexion à la base de données avec user et password en parametre
  * @return PDO
- * Fonction de connexion à la base de données
- * @return PDO objet de connexion à la base de données
  */
 function dbConnection($user = 'userBiblio', $passwd = 'y2gKnyq>he*4&JY')
 {
@@ -64,7 +62,7 @@ function getLivresByTitreAndGenre($unObjPDO, $titre, $genre)
  */
 function getGenres($unObjPDO)
 {
-    $requete = "SELECT genre, chemin FROM Genres";
+    $requete = "SELECT genre, id, chemin FROM Genres";
     $stmt = $unObjPDO->prepare($requete);
     $stmt->execute();
     $lesGenres = $stmt->fetchAll();
@@ -130,6 +128,7 @@ function getLivres($pdo)
                         Livres.photo,
                         Livres.resume,
                         Livres.datesortie,
+                        Livres.cotation,
                         Auteurs.nom, 
                         Auteurs.prenom,
                         Auteurs.date_naissance,
@@ -214,4 +213,48 @@ function deleteLivre($unObjPDO, $idLivre)
         echo "Erreur lors de la suppression du livre : " . $e->getMessage();
         return false;
     }
+}
+
+/**
+ * Fonction qui met à jour les informations d'un livre
+ * @param PDO $unObjPDO objet de connexion à la base de données
+ * @param int $idLivre identifiant du livre à mettre à jour
+ * @param string $titre titre du livre
+ * @param string $photo photo du livre
+ * @param string $resume résumé du livre
+ * @param string $datesortie date de sortie du livre
+ * @param int $idGenre identifiant du genre
+ * @param int $idAuteur identifiant de l'auteur
+ * @param string $cotation cotation du livre
+ * @return bool true si la mise à jour a réussi, false sinon
+ */
+function updateLivre($unObjPDO, $idLivre, $titre, $photo, $resume, $datesortie, $idGenre, $idAuteur, $cotation) {
+    try {
+        $requete = "UPDATE Livres SET titre = :titre, photo = :photo, resume = :resume, datesortie = :datesortie, id_genre = :id_genre, id_auteur = :id_auteur, cotation = :cotation WHERE id = :id";
+        $stmt = $unObjPDO->prepare($requete);
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':photo', $photo);
+        $stmt->bindParam(':resume', $resume);
+        $stmt->bindParam(':datesortie', $datesortie);
+        $stmt->bindParam(':id_genre', $idGenre, PDO::PARAM_INT);
+        $stmt->bindParam(':id_auteur', $idAuteur, PDO::PARAM_INT);
+        $stmt->bindParam(':cotation', $cotation);
+        $stmt->bindParam(':id', $idLivre, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la mise à jour du livre : " . $e->getMessage();
+        return false;
+    }
+}
+function getGenreById($unObjPDO, $idGenre) {
+    $requete = "SELECT  Genres.genre
+                FROM `Genres`
+                WHERE Genres.id = :id";    
+    
+    $stmt = $unObjPDO->prepare($requete);
+    $stmt->bindParam(':id', $idGenre, PDO::PARAM_INT);
+    $stmt->execute();
+    $genre = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row as an associative array
+    return $genre['genre'];
 }
