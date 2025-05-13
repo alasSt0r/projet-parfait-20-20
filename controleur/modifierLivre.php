@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
         $stmt = $unObjPDO->prepare($requete);
         $stmt->bindParam(':id', $idLivre, PDO::PARAM_INT);
         $stmt->execute();
-        header("Location: index.php?action=supprimerLivre&message=deleted");
+        header("Location: index.php?action=modifierLivre&message=deleted");
         exit();
     } catch (Exception $e) {
         echo "Erreur lors de la suppression du livre : " . $e->getMessage();
@@ -50,5 +50,5 @@ if (isset($_GET['titre']) || isset($_GET['genre'])) {
 dbDisconnect($unObjPDO);
 
 // Appel de la vue
-include "vue/vueSupprimerLivre.php";
+include "vue/vueModifierLivre.php";
 ?>
