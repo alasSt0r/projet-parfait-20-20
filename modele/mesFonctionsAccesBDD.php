@@ -98,7 +98,8 @@ function getLivres($pdo)
                     Livres.photo,
                     Auteurs.nom AS auteur_nom, 
                     Auteurs.prenom AS auteur_prenom, 
-                    Livres.resume 
+                    Livres.resume,
+                    Livres.cotation 
                 FROM Livres 
                 JOIN Auteurs ON Auteurs.id = Livres.id_auteur";
     
@@ -112,7 +113,8 @@ function getLivres($pdo)
                 'photo'=> $row['photo'],
                 'nom' => $row['auteur_nom'],   // Correction de l'accès au champ
                 'prenom' => $row['auteur_prenom'], // Correction de l'accès au champ
-                'resume' => mb_substr($row['resume'], 0, 50, 'UTF-8') . '...' // Meilleure gestion des caractères UTF-8
+                'resume' => mb_substr($row['resume'], 0, 50, 'UTF-8') . '...', // Meilleure gestion des caractères UTF-8
+                'cotation' => $row['cotation']
             ];
         }
         return $livres;
@@ -157,10 +159,11 @@ function getLivres($pdo)
  * @param string $auteur auteur du livre
  * @param string $datesortie date de sortie du livre
  * @param string $resume resume du livre
+ * @param string $cotation cotation du livre
  */
-function addLivre($unObjPDO, $titre, $photo, $genre, $auteur, $datesortie, $resume)
+function addLivre($unObjPDO, $titre, $photo, $genre, $auteur, $datesortie, $resume, $cotation)
 {
-    $requete = "INSERT INTO Livres (titre, photo, id_genre, id_auteur, datesortie, resume) VALUES ( :titre, :photo, (SELECT id FROM Genres WHERE genre = :genre), :auteur, :datesortie, :resume)";
+    $requete = "INSERT INTO Livres (titre, photo, id_genre, id_auteur, datesortie, resume, cotation) VALUES ( :titre, :photo, (SELECT id FROM Genres WHERE genre = :genre), :auteur, :datesortie, :resume, :cotation)";
     $stmt = $unObjPDO->prepare($requete);
     $stmt->bindParam(':titre', $titre);
     $stmt->bindParam(':photo', $photo);
@@ -168,6 +171,7 @@ function addLivre($unObjPDO, $titre, $photo, $genre, $auteur, $datesortie, $resu
     $stmt->bindParam(':auteur', $auteur);
     $stmt->bindParam(':datesortie', $datesortie);
     $stmt->bindParam(':resume', $resume);
+    $stmt->bindParam(':cotation', $cotation);
     $stmt->execute();
 }
 
